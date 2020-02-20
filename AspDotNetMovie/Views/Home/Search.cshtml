@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Search Movies";
+}
+@model MovieResponse
+
+<h1>@ViewData["Title"]</h1>
+  
+<p>Use this page to detail your site's privacy policy.</p>
+
+
+<div class="container">
+    <div class="jumbotron">
+        <h3 class="text-center">Search For Any Movie</h3>
+        <form id="searchForm" asp-controller="Home" asp-action="Search" method="get">
+            <input type="text" class="form-control" id="searchText" name="SearchString" placeholder="Search Movies...">
+            <input type="submit" value="searchText" />
+        </form>
+    </div>
+
+    @if (Model.Search != null)
+    {
+        <p>Count: @Model.totalResults</p>
+        <div class="row">
+            @foreach (var p in Model.Search)
+            {
+                <div class="col-md-3">
+                    <div class="border bg-light rounded p-1">
+                        <img src='@p.Poster' class="img-fluid" alt="@p.Title" />
+                        <ul>
+                            <li>imdID: $@p.imdbID</li>
+                            <li>Type: @p.Type</li>
+                            <li>Title: @p.Title</li>
+                        </ul>
+                        <button id="buyButton" class="btn btn-success">Buy</button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <p>No movies found!</p>
+        </div>
+    }
+</div>
+

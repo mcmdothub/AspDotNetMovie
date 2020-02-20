@@ -1,0 +1,68 @@
+﻿@* Comment goes here *@
+@* need to specify the model for the page *@
+
+@model IEnumerable<Movie>
+@section Scripts {
+    <script src="~/ts/storecustomer.js"></script>
+    <script src="~/ts/main.js"></script>
+}
+<h1>Shop</h1>
+@if (Model != null)
+{
+    <p>Count: @Model.Count()</p>
+    <div class="row">
+        @foreach (var p in Model)
+        {
+            <div class="col-md-3">
+                <div class="border bg-light rounded p-1">
+                    <img src="~/img/Bad Santa.jpg" class="img-fluid" alt="@p.Title" />
+                    <ul>
+                        <li>Price: $@p.Price</li>
+                        <li>Plot: @p.Overview</li>
+                        <li>Title: @p.Title</li>
+                        <li>Director: @p.Director</li>
+                    </ul>
+                    <button id="buyButton" class="btn btn-success">Buy</button>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="row">
+        <p>No movies found!</p>
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
